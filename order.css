@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  height: -moz-max-content;
+  height: max-content;
+  background: url("./image/gradient-background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.glassmorphism-box, .order .content .text-box, .order .content {
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+}
+
+.order {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+.order .content {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+  min-width: 300px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: 0.5s ease-in-out;
+  z-index: 1000;
+  padding: 50px;
+}
+.order .content .text-box {
+  flex: 0 0 50%;
+  height: 150%;
+  padding: 30px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.order .content .text-box .text-content select {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  font-weight: 600;
+  width: 150px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #3987b5;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+  margin: 20px;
+}
+.order .content .text-box .text-content select:last-child {
+  color: #cb1f98;
+}
+.order .content .text-box .text-content select:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #4ab0ea;
+}
+.order .content .text-box .text-content select:last-child:hover {
+  color: #df56b6;
+}
+.order .content .text-box .text-content select:focus {
+  background: rgba(255, 255, 255, 0.4);
+  color: #4ab0ea;
+}
+.order .content .text-box .text-content select:last-child:focus {
+  background: rgba(255, 255, 255, 0.4);
+  color: #df56b6;
+}
+.order .content .text-box .text-content select::before, .order .content .text-box .text-content select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 4px 0 4px;
+  border-color: #fff transparent transparent transparent;
+  opacity: 0.6;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+.order .content .text-box .text-content select::before {
+  margin-top: -10px;
+}
+.order .content .text-box .text-content select::after {
+  margin-top: 4px;
+}
+.order .content .text-box .text-content select:focus ~ ::before, .order .content .text-box .text-content select:hover ~ ::before {
+  opacity: 1;
+  margin-top: -12px;
+  border-width: 0 4px 6px 4px;
+}
+.order .content .text-box .text-content select:focus ~ ::after, .order .content .text-box .text-content select:hover ~ ::after {
+  margin-top: 2px;
+  border-width: 6px 4px 0 4px;
+}
+
+.background-image {
+  position: absolute;
+  width: 600px;
+  height: 800px;
+  left: 120px;
+  top: calc(100% - 800px);
+  z-index: 100;
+}
+.background-image img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 100;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transform: translateY(20px);
+}
+
+@media (min-width: 1440px) {
+  .order .content {
+    width: 70%;
+    padding: 50px;
+  }
+  .background-image {
+    left: -200px;
+    top: 150px;
+    width: 90%;
+    height: 90%;
+  }
+  .background-image img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center bottom;
+       object-position: center bottom;
+  }
+}
+@media (max-width: 1279px) {
+  .order .content {
+    width: calc(100% - 100px);
+    padding: 50px 25px;
+  }
+  .background-image {
+    left: -100px;
+    top: 100px;
+    width: 90%;
+    height: 90%;
+  }
+  .background-image img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center bottom;
+       object-position: center bottom;
+  }
+}
+@media (max-width: 767px) {
+  .order .content .text-box {
+    flex: 0 0 100%;
+    height: 150%;
+    padding: 30px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .order .content .text-box .text-content {
+    overflow-y: auto;
+    position: relative;
+    height: 50%;
+    z-index: 1000;
+  }
+  .order .content .text-box .text-content::-webkit-scrollbar {
+    width: 10px;
+  }
+  .order .content .text-box .text-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  .order .content .text-box .text-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  .order .content .text-box .text-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  .background-image {
+    left: -100px;
+    top: calc(100% - 450px);
+    width: 70%;
+    max-width: 470px;
+    max-height: 450px;
+    min-width: 400px;
+  }
+}
+@keyframes bounce {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}/*# sourceMappingURL=order.css.map */

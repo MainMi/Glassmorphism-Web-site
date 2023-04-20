@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    height: max-content;
+    background: url('./image/gradient-background.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.glassmorphism-box {
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.75);
+    border-left: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    h1 {
+        display: flex;
+        font-size: 45px;
+        align-items: center;
+        margin-top: 100px;
+        // span:first-child {
+        //     color: #8a2435;
+        // }
+        // span:last-child {
+        //     color: #1a5052;
+        // }
+        &::before {
+            display: block;
+            content: "";
+            width: 10px;
+            height: 4px;
+            // background-color: #8a2435;
+            background-color: #111;
+            margin-right: 5px;
+        }
+        &::after {
+            display: block;
+            content: "";
+            width: 10px;
+            height: 4px;
+            background-color: #111;
+            // background-color: #1a5052;
+            margin-left: 5px;
+        }
+        
+    }
+    .cardBox {
+        position: relative;
+        width: 100%;
+        height: max-content;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+        justify-content: space-evenly;
+        justify-items: center;
+        padding-top: 50px;
+    
+        .card {
+            position: relative;
+            height: 300px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            @extend .glassmorphism-box;
+            transform-style: preserve-3d;
+            transition: all 0.2s ease;
+    
+            img {
+                position: absolute;
+                width: 130px;
+                height: 130px;
+                border-radius: 10px;
+                -o-object-fit: cover;
+                object-fit: cover;
+                z-index: 10;
+                left: 34.5px;
+                top: -10px;
+                border: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+    
+            .btn {
+                position: relative;
+                display: inline-block;
+                padding: 15px 30px;
+                background-color: #fff;
+                color: #8a2435;
+                font-weight: 500;
+                font-size: 1.2em;
+                width: max-content;
+                margin: 20px 0;
+                border-radius: 30px;
+                border: none;
+                text-decoration: none;
+                box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+                overflow: hidden;
+    
+                &::before {
+                    position: relative;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 50px;
+                    height: 100%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    transform: skewX(45deg) translateX(200px);
+                    transition: 0.5s;
+                }
+    
+                &:hover::before {
+                    transform: skewX(45deg) translateX(-200px);
+                }
+            }
+        }
+    
+        .element {
+            position: absolute;
+            left: 25px;
+            top: -20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            @extend .glassmorphism-box;
+            backdrop-filter: blur(5px);
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow-y: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: none;
+    &.active {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        .modal-content {
+            transform: translateY(0px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+    }
+    .modal-content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        min-width: 300px;
+        height: 500px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        transition: 0.5s ease-in-out;
+        z-index: 1000;
+        transform: translateY(-50px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        .modal-images {
+            position: relative;
+            flex: 0 0 50%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            &_main {
+                position: absolute;
+                display: block;
+                min-width: 250px;
+                min-height: 250px;
+                width: calc(80vw / 3);
+                height: calc(80vw / 3);
+                max-width: 340px;
+                max-height: 340px;
+                background-color: #fff;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                border-radius: 10px;
+                top: -20px;
+            }
+            &_collum {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: max-content;
+                height: 100%;
+                flex: 0 0 25%;
+                
+                .modal-images-container {
+                    display: block;
+                    width: 100px;
+                    height: 100px;
+                    background-color: #fff;
+                    border-radius: 10px;
+                    margin: 25px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                .modal-left {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    background-image: url("./image/caret-left-solid.svg");
+                    background-repeat: no-repeat;
+                    left: -10px;
+                    filter: invert(1);
+                }
+                .modal-right {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    background-image: url("./image/caret-right-solid.svg");
+                    background-repeat: no-repeat;
+                    left: calc(100% - 15px);
+                    filter: invert(1);
+                }
+            } 
+        }
+        .modal-flex {
+            flex: 0 0 50%;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            .modal-close {
+                position: absolute;
+                display: block;
+                width: 40px;
+                height: 40px;
+                background: url("./image/xmark-solid.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                left: calc(100% - 50px);
+                top: 10px;
+                
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .modal {
+        .modal-content {
+            flex-direction: column;
+            height: 80%;
+            min-height: 600px;
+            .modal-images {
+                flex: 0 0 25%;
+            }
+            .modal-flex {
+                flex: 0 0 75%;
+                padding: 25px;
+                padding-top: 0;
+            }
+            .modal-images {
+                &_main {
+                    transform: scale(0.8);
+                    top: -45px;
+                }
+            }
+            .modal-images-button {
+                position: absolute;
+                top: 50px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .modal-left {
+                    position: relative;
+                    display: block;
+                    width: 75px;
+                    height: 75px;
+                    background-image: url("./image/caret-left-solid.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    filter: invert(1);
+                }
+                .modal-right {
+                    position: relative;
+                    display: block;
+                    width: 75px;
+                    height: 75px;
+                    background-image: url("./image/caret-right-solid.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    filter: invert(1);
+                }
+            }
+        }
+    }
+}
+.background-element {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: url('./image/magicship.png');
+    background-size: cover;
+}
